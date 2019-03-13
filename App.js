@@ -5,16 +5,23 @@ import {Container} from 'native-base';
 import HomeScreen from './src/screen/HomeScreen';
 import MenuScreen from './src/screen/MenuScreen';
 import SplashScreen from './src/screen/SplashScreen';
+import SideMenu from './src/components/SideMenuComponent';
 
 
-const MyDrawerNavigator = createDrawerNavigator({
-	'Trang chủ':{ 
-		screen: HomeScreen,
+const MyDrawerNavigator = createDrawerNavigator(
+	{
+		'HomeScreen':HomeScreen,
+		'MenuScreen':MenuScreen
 	},
-	'Danh mục': {
-		screen: MenuScreen,
-	},
- });
+	{
+        initialRouteName: "HomeScreen",
+		contentComponent: props => <SideMenu {...props} activeTintColor="red"/>,
+		contentOptions: {
+			inactiveTintColor: "#0dc45c",
+			activeTintColor: 'red'
+		},
+    }
+);
  
 const Home = createAppContainer(MyDrawerNavigator);
 

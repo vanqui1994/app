@@ -5,7 +5,7 @@ import {Header,Left,Right,Thumbnail,Body,Title } from 'native-base';
 export default class HeaderComponent extends Component {
 
     showStatusBar(){
-        if(Platform.OS == 'ios'){
+        if(Platform.OS === 'ios'){
             return(
                 <StatusBar backgroundColor="#FE8028" barStyle="light-content"/>
             )
