@@ -4,6 +4,7 @@ import {Container} from 'native-base';
 
 import HomeScreen from './src/screen/HomeScreen';
 import MenuScreen from './src/screen/MenuScreen';
+import SplashScreen from './src/screen/SplashScreen';
 
 
 const MyDrawerNavigator = createDrawerNavigator({
@@ -15,16 +16,26 @@ const MyDrawerNavigator = createDrawerNavigator({
 	},
  });
  
-const MyApp = createAppContainer(MyDrawerNavigator);
+const Home = createAppContainer(MyDrawerNavigator);
 
-class App extends React.Component{
+class App extends Component{
+	constructor(props){
+		super(props);
+		this.state = { currentScreen : 'Splash' }
+		setTimeout(() => {
+			this.setState({ currentScreen : 'Home' })
+		},2000)
+	}
+
     render(){
-      return(
-        <Container>
-          <MyApp ></MyApp >
-        </Container>
-      );
+		const {currentScreen} = this.state;
+		let mainScreen = currentScreen === 'Splash' ? <SplashScreen/> : <Home/>;
+		return(
+			<Container>
+				{mainScreen}
+			</Container>
+		);
     }
-}//End of App class
+}
 
 export default App;

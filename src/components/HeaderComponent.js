@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {TouchableOpacity,StyleSheet,Platform,StatusBar} from 'react-native';
-import {Container,Header,Left,Right,Thumbnail,Text,Body,Title } from 'native-base';
+import {Header,Left,Right,Thumbnail,Body,Title } from 'native-base';
 
 export default class HeaderComponent extends Component {
 
@@ -17,9 +17,9 @@ export default class HeaderComponent extends Component {
             <Header style={css.headerStyle}>
                 {this.showStatusBar()}
                 <Left style={{ flexDirection: 'row',flex : 1}}>
-                <TouchableOpacity onPress={() => this.props.navigation.openDrawer()}>
-                    <Thumbnail square small source={require('../icons/menu-icon.png')} />
-                </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.openDrawer()}>
+                        <Thumbnail square small source={require('../icons/menu-icon.png')} />
+                    </TouchableOpacity>
                 </Left>
                 <Body>
                     <Title style={css.titleStyle}>{this.props.title}</Title>
