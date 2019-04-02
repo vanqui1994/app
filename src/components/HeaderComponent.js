@@ -7,7 +7,7 @@ export default class HeaderComponent extends Component {
     showStatusBar(){
         if(Platform.OS === 'ios'){
             return(
-                <StatusBar backgroundColor="#FE8028" barStyle="light-content"/>
+                <StatusBar backgroundColor="#9DCAEF" barStyle="light-content"/>
             )
         }
     }
@@ -17,14 +17,18 @@ export default class HeaderComponent extends Component {
             <Header style={css.headerStyle}>
                 {this.showStatusBar()}
                 <Left style={{ flexDirection: 'row',flex : 1}}>
-                    <TouchableOpacity onPress={() => this.props.navigation.openDrawer()}>
-                        <Thumbnail square small source={require('../icons/menu-icon.png')} />
+                    <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                        <Thumbnail square small source={require('../icons/icon-back.png')} />
                     </TouchableOpacity>
                 </Left>
                 <Body>
                     <Title style={css.titleStyle}>{this.props.title}</Title>
                 </Body>
-                <Right></Right>
+                <Right>
+                    <TouchableOpacity onPress={() => this.props.navigation.openDrawer()}>
+                        <Thumbnail square small source={require('../icons/menu-icon.png')} />
+                    </TouchableOpacity>
+                </Right>
             </Header>
         )
     }
@@ -32,7 +36,7 @@ export default class HeaderComponent extends Component {
 
 const css = StyleSheet.create({
     headerStyle : {
-        backgroundColor : "#FE8028"
+        backgroundColor : "#9DCAEF"
     },
     titleStyle : {
         color : "white"

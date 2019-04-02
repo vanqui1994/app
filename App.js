@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import { createDrawerNavigator,createAppContainer } from 'react-navigation'
 import {Container} from 'native-base';
+import {Dimensions} from 'react-native'
 
 import HomeScreen from './src/screen/HomeScreen';
 import MenuScreen from './src/screen/MenuScreen';
 import SplashScreen from './src/screen/SplashScreen';
 import SideMenu from './src/components/SideMenuComponent';
 
-
+const {height,width} = Dimensions.get('window');
 const MyDrawerNavigator = createDrawerNavigator(
 	{
 		'HomeScreen':HomeScreen,
 		'MenuScreen':MenuScreen
 	},
 	{
-        initialRouteName: "HomeScreen",
+		initialRouteName: "HomeScreen",
+		drawerWidth: width / 1.7,
 		contentComponent: props => <SideMenu {...props} activeTintColor="red"/>,
 		contentOptions: {
 			inactiveTintColor: "#0dc45c",
