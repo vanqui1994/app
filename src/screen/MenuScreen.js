@@ -59,18 +59,17 @@ export default class MenuScreen extends Component {
 		return (
 			<Container>
 				<HeaderComponent {...this.props} title={this.state.title}/>
-				{this.state.isLoading ? <Spinner color='#9DCAEF'/>: null}
-				<FlatList data={this.state.dataNews}
+				{this.state.isLoading ? <Spinner color='#9DCAEF'/>: <FlatList data={this.state.dataNews}
                 renderItem={({item,index}) => {
                     return(
-                        <ListItemComponent item={item} index={index} parentFlatList={this}/>
+                        <ListItemComponent {...this.props} item={item} index={index} parentFlatList={this}/>
                     );
                 }}
 				keyExtractor={(item) => item.id }
 				refreshControl={
                     <RefreshControl refreshing={this.state.refreshing} onRefresh={this._onRefresh}/>
                 }
-                />
+                />}
 			</Container>
 		)
 	}

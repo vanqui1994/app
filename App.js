@@ -5,6 +5,7 @@ import {Dimensions} from 'react-native'
 
 import HomeScreen from './src/screen/HomeScreen';
 import MenuScreen from './src/screen/MenuScreen';
+import DetailScreen from './src/screen/DetailScreen';
 import SplashScreen from './src/screen/SplashScreen';
 import SideMenu from './src/components/SideMenuComponent';
 
@@ -12,7 +13,8 @@ const {height,width} = Dimensions.get('window');
 const MyDrawerNavigator = createDrawerNavigator(
 	{
 		'HomeScreen':HomeScreen,
-		'MenuScreen':MenuScreen
+		'MenuScreen':MenuScreen,
+		'DetailScreen':DetailScreen
 	},
 	{
 		initialRouteName: "HomeScreen",

@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import {ScrollView,TouchableOpacity,Platform} from 'react-native'
 import {NavigationActions} from 'react-navigation';
-import {Container,Header,Content,CardItem,Text,Right,Left,Thumbnail,Title,Body} from 'native-base'
+import {Container,Header,Content,CardItem,Text,Right,Left,Thumbnail,Title,Body,Icon} from 'native-base'
 
 import jsonMenu from '../configs/jsonSideMenu';
 
 class SideMenuComponent extends Component {
-    navigateToScreen = (route,params,key) => () => {
+    navigateToScreen = (route,params) => () => {
         const navigateAction = NavigationActions.navigate({
             routeName: route,
             params : params,
@@ -31,7 +31,7 @@ class SideMenuComponent extends Component {
                                     <Text>{item.name}</Text>
                                 </Left>
                                 <Right>
-                                    <Thumbnail square small source={require('../icons/arrow-forward.png')} style={{width:20,height:20}}/>
+                                    <Icon name="arrow-forward" />
                                 </Right>
                             </CardItem>
                         </TouchableOpacity>

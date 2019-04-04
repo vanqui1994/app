@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Header,Left,Right,Thumbnail,Body,Title,Container,Spinner,Content} from 'native-base';
+import {Header,Left,Right,Thumbnail,Body,Title,Container,Spinner} from 'native-base';
 import {TouchableOpacity,StyleSheet,Platform,StatusBar,FlatList} from 'react-native';
 import ListItemComponent from '../components/ListItemComponent';
 import * as general from '../utils/general';
@@ -44,7 +44,7 @@ export default class HomeScreen extends Component {
             <Container>
                 <Header style={css.headerStyle}>
                     {this.showStatusBar()}
-                    <Left style={{ flexDirection: 'row',flex : 1}}>
+                    <Left style={css.leftHeader}>
                         <TouchableOpacity onPress={() => this.props.navigation.openDrawer()}>
                             <Thumbnail square small source={require('../icons/menu-icon.png')} />
                         </TouchableOpacity>
@@ -54,17 +54,15 @@ export default class HomeScreen extends Component {
                     </Body>
                     <Right></Right>
                 </Header>
-                {this.state.isLoading ? <Spinner color='#9DCAEF'/>: null}
-                <FlatList data={this.state.dataNews}
+                {this.state.isLoading ? <Spinner color='#9DCAEF'/>: <FlatList data={this.state.dataNews}
                 renderItem={({item,index}) => {
                     return(
-                        <ListItemComponent item={item} index={index} parentFlatList={this}/>
+                        <ListItemComponent {...this.props} item={item} index={index} parentFlatList={this}/>
                     );
                 }}
                 keyExtractor={(item) => item.id }
                 refreshing={this.state.refreshing} onRefresh={this._onRefresh}
-                />
-				
+                />}
             </Container>
         )
     }
@@ -76,5 +74,9 @@ const css = StyleSheet.create({
     },
     titleStyle : {
         color : "white"
+    },
+    leftHeader : {
+        flexDirection : 'row',
+        flex : 1
     }
 })
